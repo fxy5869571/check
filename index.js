@@ -34,7 +34,7 @@ router.post("/api/count", async (ctx) => {
   };
 });
 
-router.post("/api/msgCheck",msgCheck)
+router.get("/api/msgCheck",msgCheck)
 
 
 

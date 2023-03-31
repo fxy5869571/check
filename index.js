@@ -4,6 +4,7 @@ const logger = require("koa-logger");
 const bodyParser = require("koa-bodyparser");
 const fs = require("fs");
 const path = require("path");
+const {msgCheck} = require("./routers/msgCheck")
 const { init: initDB, Counter } = require("./db");
 
 const router = new Router();
@@ -33,15 +34,9 @@ router.post("/api/count", async (ctx) => {
   };
 });
 
-// 获取计数
-router.get("/api/count", async (ctx) => {
-  const result = await Counter.count();
+router.post("/api/msgCheck",msgCheck)
 
-  ctx.body = {
-    code: 0,
-    data: result,
-  };
-});
+
 
 // 小程序调用，获取微信 Open ID
 router.get("/api/wx_openid", async (ctx) => {
